@@ -6,14 +6,16 @@ public:
         int ans=0;
 
         queue<pair<pair<int,int>,int>> q;
+        vector<vector<bool>> vis(n,vector<bool>(m,false));
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(grid[i][j]==2){
                     q.push({{i,j},0});
+                    vis[i][j]=true;
                 }
             }
         }
-        vector<vector<bool>> vis(n,vector<bool>(m,false));
+        
 
         while(q.size()>0){
             int i=q.front().first.first;
