@@ -1,24 +1,16 @@
 class Solution {
 public:
     int minLengthAfterRemovals(string s) {
-        stack<char>s1,s2;
-        for(int i=0;i<s.length();i++){
-            if(s[i]=='a'){
-                s1.push(s[i]);
-            }else{
-                s2.push(s[i]);
+        sort(s.begin(),s.end());
+        int i=0,j=s.length()-1;
+        int cnt=0;
+        while(i<=j){
+            if(s[i]==s[j]){
+                return (j-i)+1;
             }
+            i++;
+            j--;
         }
-        while(!s1.empty() && !s2.empty()){
-            if(s1.top()=='a' && s2.top()=='b'){
-                s1.pop();
-                s2.pop();
-            }
-        }
-        if(s1.size()>s2.size()){
-            return s1.size();
-        }else{
-            return s2.size();
-        }
+        return 0;
     }
 };
